@@ -9,7 +9,8 @@ export default function GuessingGame() {
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState("Guess a number between 1 and 100!");
   const [attempts, setAttempts] = useState(0);
-  const [status, setStatus] = useState<"playing" | "success" | "fail">("playing");
+  const [status, setStatus] =
+    useState<"playing" | "success" | "fail">("playing");
   const [celebrate, setCelebrate] = useState(false);
 
   useEffect(() => {
@@ -41,9 +42,13 @@ export default function GuessingGame() {
       setMessage(`💥 Game over! The number was ${randomNumber}. Try again!`);
       setStatus("fail");
     } else if (userGuess < randomNumber) {
-      setMessage(diff <= 5 ? "⬆️ Close! Slightly higher!" : "⬆️ Too low! Go higher!");
+      setMessage(
+        diff <= 5 ? "⬆️ Close! Slightly higher!" : "⬆️ Too low! Go higher!"
+      );
     } else {
-      setMessage(diff <= 5 ? "⬇️ Close! Slightly lower!" : "⬇️ Too high! Go lower!");
+      setMessage(
+        diff <= 5 ? "⬇️ Close! Slightly lower!" : "⬇️ Too high! Go lower!"
+      );
     }
 
     setGuess("");
@@ -76,14 +81,15 @@ export default function GuessingGame() {
     <div
       className={`flex flex-col items-center justify-center min-h-screen p-4 ${bgStyle} transition-all duration-500 relative`}
     >
-      {/* Celebration emojis */}
       {celebrate && (
         <div className="absolute top-10 flex gap-2 text-5xl animate-bounce">
           🎉✨🥳🎊
         </div>
       )}
 
-      <h1 className="text-4xl font-bold mb-6 text-white">Number Guessing Game</h1>
+      <h1 className="text-4xl font-bold mb-6 text-white">
+        Number Guessing Game
+      </h1>
       <p className={`${messageStyle} mb-4 text-center`}>{message}</p>
 
       {status === "playing" && (
@@ -91,10 +97,9 @@ export default function GuessingGame() {
           <input
             type="text"
             value={guess}
-            onChange={(e) => {
-              const value = e.target.value;
-              if (/^\d*$/.test(value)) setGuess(value);
-            }}
+            onChange={(e) =>
+              /^\d*$/.test(e.target.value) && setGuess(e.target.value)
+            }
             maxLength={3}
             className="border p-2 rounded w-24 text-center"
           />
