@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+@keyframes bg-pulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-bg-pulse {
+  background-size: 200% 200%;
+  animation: bg-pulse 4s ease infinite;
+}
+
+.animate-bg-shake {
+  background-size: 200% 200%;
+  animation: bg-pulse 1s ease infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
