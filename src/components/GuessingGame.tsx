@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,6 +7,11 @@ export default function GuessingGame() {
   const [randomNumber, setRandomNumber] = useState<number>(
     Math.floor(Math.random() * 100) + 1
   );
+//   const [randomNumber, setRandomNumber] = useState(0);
+
+// useEffect(() => {
+//   setRandomNumber(Math.floor(Math.random() * 100) + 1);
+// }, []);
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState("Guess a number between 1 and 100!");
   const [attempts, setAttempts] = useState(0);
